@@ -1,0 +1,435 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>cn.benma666</groupId>
+    <artifactId>kettle-manager</artifactId>
+    <packaging>war</packaging>
+    <version>0.1.0</version>
+
+    <name>kettle-manager</name>
+    <url>http://git.oschina.net/ma459006574/kettle-manager</url>
+
+    <properties>
+        <!-- 主要依赖库的版本定义 -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jdk.version>1.7</jdk.version>
+        <junit.version>4.11</junit.version>
+
+        <mysql.version>5.1.20</mysql.version>
+        <oracle.version>14</oracle.version>
+
+        <druid.version>1.0.12</druid.version>
+        <ehcache.version>2.5.2</ehcache.version>
+
+        <jetty.version>8.1.8</jetty.version>
+        <jfinal.version>2.2</jfinal.version>
+        <cglib.version>3.1</cglib.version>
+        
+        <beetl.version>2.2.5</beetl.version>
+
+        <cos.version>26Dec2008</cos.version>
+        <fastjson.version>1.2.0</fastjson.version>
+        <commons-codec.version>1.7</commons-codec.version>
+        <log4j.version>1.2.16</log4j.version>
+        <slf4j.version>1.6.1</slf4j.version>
+        <jxl.version>2.6.12</jxl.version>
+        <kettle.version>5.4.1.8-209</kettle.version>
+        <beetle.version>2.2.5</beetle.version>
+    </properties>
+
+    <repositories>
+        <!--kettle 仓库 -->
+        <repository>
+            <id>pentaho-releases</id>
+            <url>http://nexus.pentaho.org/content/groups/omni</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>myutil</groupId>
+            <artifactId>my-jar</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/myutils.jar</systemPath>
+        </dependency>
+
+        <!--<dependency>-->
+            <!--<groupId>ojdbc</groupId>-->
+            <!--<artifactId>ojdbc-jar</artifactId>-->
+            <!--<version>1.0</version>-->
+            <!--<scope>system</scope>-->
+            <!--<systemPath>${project.basedir}/lib/ojdbc-14.jar</systemPath>-->
+        <!--</dependency>-->
+
+        <dependency>
+            <groupId>eova</groupId>
+            <artifactId>eova-jar</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/eova-1.5.1.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>quartz</groupId>
+            <artifactId>quartz-jar</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/quartz-2.2.2.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>kettleUtil</groupId>
+            <artifactId>kettleUtil-jar</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/kettleUtil.jar</systemPath>
+        </dependency>
+
+        <!--<dependency>-->
+            <!--<groupId>kettlecore</groupId>-->
+            <!--<artifactId>kettlecore-jar</artifactId>-->
+            <!--<version>1.0</version>-->
+            <!--<scope>system</scope>-->
+            <!--<systemPath>${project.basedir}/lib/kettle-core-7.1.0.0-12.jar</systemPath>-->
+        <!--</dependency>-->
+
+        <!--<dependency>-->
+            <!--<groupId>kettleengine</groupId>-->
+            <!--<artifactId>kettleengine-jar</artifactId>-->
+            <!--<version>1.0</version>-->
+            <!--<scope>system</scope>-->
+            <!--<systemPath>${project.basedir}/lib/kettle-engine-7.1.0.0-12.jar</systemPath>-->
+        <!--</dependency>-->
+
+        <!-- https://mvnrepository.com/artifact/commons-lang/commons-lang -->
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.4</version>
+        </dependency>
+
+    
+        <!--<dependency>-->
+			<!--<groupId>cn.benma666</groupId>-->
+			<!--<artifactId>myutils</artifactId>-->
+			<!--<version>0.0.1</version>-->
+        <!--</dependency>-->
+
+        <!-- https://mvnrepository.com/artifact/commons-net/commons-net -->
+        <dependency>
+            <groupId>commons-net</groupId>
+            <artifactId>commons-net</artifactId>
+            <version>3.1</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.5</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.3.1</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-vfs2 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-vfs2</artifactId>
+            <version>2.2</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.github.stuxuhai/jpinyin -->
+        <dependency>
+            <groupId>com.github.stuxuhai</groupId>
+            <artifactId>jpinyin</artifactId>
+            <version>1.1.8</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.eclipse.swt/org.eclipse.swt.win32.win32.x86 -->
+        <dependency>
+            <groupId>org.eclipse.swt</groupId>
+            <artifactId>org.eclipse.swt.win32.win32.x86</artifactId>
+            <version>4.3</version>
+            <scope>provided</scope>
+        </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/commons-vfs/commons-vfs -->
+        <!--<dependency>-->
+            <!--<groupId>commons-vfs</groupId>-->
+            <!--<artifactId>commons-vfs</artifactId>-->
+            <!--<version>1.0</version>-->
+        <!--</dependency>-->
+
+        <!-- https://mvnrepository.com/artifact/org.scannotation/scannotation -->
+        <dependency>
+            <groupId>org.scannotation</groupId>
+            <artifactId>scannotation</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
+        
+        <!--<dependency>-->
+		  <!--<groupId>oracle.ojdbc</groupId>-->
+		  <!--<artifactId>ojdbc</artifactId>-->
+		  <!--<version>${oracle.version}</version>-->
+		<!--</dependency>-->
+
+        <!---->
+<!--         <dependency> -->
+<!--             <groupId>postgresql</groupId> -->
+<!--             <artifactId>postgresql</artifactId> -->
+<!--             <version>9.1-901-1.jdbc4</version> -->
+<!--         </dependency> -->
+        
+<!--         <dependency> -->
+<!--             <groupId>com.h2database</groupId> -->
+<!--             <artifactId>h2</artifactId> -->
+<!--             <version>1.4.187</version> -->
+<!--         </dependency> -->
+        
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jfinal</groupId>
+            <artifactId>jfinal</artifactId>
+            <version>${jfinal.version}</version>
+        </dependency>
+        
+        <dependency>
+    		<groupId>cglib</groupId>
+    		<artifactId>cglib-nodep</artifactId>
+    		<version>${cglib.version}</version>
+		</dependency>
+
+        <dependency>
+            <groupId>com.jfinal</groupId>
+            <artifactId>cos</artifactId>
+            <version>${cos.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jfinal</groupId>
+            <artifactId>jetty-server</artifactId>
+            <version>${jetty.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+         <dependency>
+             <groupId>com.ibeetl</groupId>
+             <artifactId>beetl</artifactId>
+             <version>${beetl.version}</version>
+         </dependency>
+
+         <dependency>
+             <groupId>com.alibaba</groupId>
+             <artifactId>druid</artifactId>
+             <version>${druid.version}</version>
+         </dependency>
+
+        <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache-core</artifactId>
+            <version>${ehcache.version}</version>
+        </dependency>
+
+         <dependency>
+             <groupId>com.alibaba</groupId>
+             <artifactId>fastjson</artifactId>
+             <version>${fastjson.version}</version>
+         </dependency>
+
+         <dependency>
+             <groupId>log4j</groupId>
+             <artifactId>log4j</artifactId>
+             <version>${log4j.version}</version>
+         </dependency>
+
+         <dependency>
+             <groupId>org.slf4j</groupId>
+             <artifactId>slf4j-api</artifactId>
+             <version>${slf4j.version}</version>
+         </dependency>
+
+         <dependency>
+             <groupId>org.slf4j</groupId>
+             <artifactId>slf4j-log4j12</artifactId>
+             <version>${slf4j.version}</version>
+         </dependency>
+
+        <dependency>
+            <groupId>net.sourceforge.jexcelapi</groupId>
+            <artifactId>jxl</artifactId>
+            <version>${jxl.version}</version>
+        </dependency>
+
+<!-- 		<dependency> -->
+<!-- 			<groupId>net.lingala.zip4j</groupId> -->
+<!-- 			<artifactId>zip4j</artifactId> -->
+<!-- 			<version>1.3.1</version> -->
+<!-- 		</dependency> -->
+
+        <!-- https://mvnrepository.com/artifact/commons-logging/commons-logging -->
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/commons-cli/commons-cli -->
+        <dependency>
+            <groupId>commons-cli</groupId>
+            <artifactId>commons-cli</artifactId>
+            <version>1.3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>3.15</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>3.15</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-client</artifactId>
+            <version>1.19.1</version>
+        </dependency>
+
+        <!-- kettle 相关jar包 -->
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-vfs2 -->
+        <dependency>
+            <groupId>pentaho-kettle</groupId>
+            <artifactId>kettle-core</artifactId>
+            <version>${kettle.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>pentaho-kettle</groupId>
+            <artifactId>kettle-ui-swt</artifactId>
+            <version>${kettle.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/simple-jndi/simple-jndi -->
+        <dependency>
+            <groupId>simple-jndi</groupId>
+            <artifactId>simple-jndi</artifactId>
+            <version>0.11.3</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.verhas </groupId>
+            <artifactId>license3j </artifactId>
+            <version>1.0.7 </version>
+        </dependency>
+
+        <dependency>
+            <groupId>pentaho-kettle</groupId>
+            <artifactId>kettle-dbdialog</artifactId>
+            <version>${kettle.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>pentaho-kettle</groupId>
+            <artifactId>kettle-engine</artifactId>
+            <version>${kettle.version}</version>
+        </dependency>
+
+
+
+        <dependency>
+            <groupId>pentaho</groupId>
+            <artifactId>metastore</artifactId>
+            <version>${kettle.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>pentaho</groupId>
+            <artifactId>metastore</artifactId>
+            <version>${kettle.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ibeetl</groupId>
+            <artifactId>beetl</artifactId>
+            <version>${beetle.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ibeetl</groupId>
+            <artifactId>beetlsql</artifactId>
+            <version>2.8.13</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <finalName>eova</finalName>
+        <sourceDirectory>${basedir}/src/main/java</sourceDirectory>
+        <!--<testSourceDirectory>${basedir}/src/test/java</testSourceDirectory>-->
+        <!--<outputDirectory>${basedir}/target</outputDirectory>-->
+        <!--<testOutputDirectory>${basedir}/src/main/webapp/WEB-INF/classes</testOutputDirectory>-->
+
+        <plugins>
+            <!-- compiler插件, 设定JDK版本 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.0</version>
+                <configuration>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                    <showWarnings>true</showWarnings>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+
+            <!-- war打包插件, 设定war包名称不带版本号 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.3</version>
+                <configuration>
+                    <warName>${project.artifactId}</warName>
+                    <warSourceExcludes>jetty-*.jar</warSourceExcludes>
+                    <webResources>
+                        <resource>
+                            <directory>${basedir}/src/main/webapp</directory>
+                        </resource>
+                    </webResources>
+                </configuration>
+            </plugin>
+
+            <!-- clean插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>2.5</version>
+            </plugin>
+            
+        </plugins>
+    </build>
+</project>
