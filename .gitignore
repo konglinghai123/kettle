@@ -1,0 +1,8 @@
+.mvn/
+target/
+.idea/
+
+*.iml
+*.class
+*.war
+.DS_Store
